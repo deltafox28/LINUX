@@ -203,3 +203,36 @@ sudo apt-get update -- sudo apt-get install emacs
 Ctrl + x + s (salvar arquivo)
 Ctrl + x + c (sair)
 ```
+## acessar outro user a partir do root:
+```sh
+su menfis
+```
+
+## acessar a configuracao de root:
+```sh
+ vim /etc/sudoers
+```
+
+## mostrar os maiores processos sendo consumidos:
+```sh
+ps aux | head
+```
+
+## visualizar processos e recursos em sistemas unix.
+```sh
+htop
+```
+
+## 
+
+
+
+
+
+
+
+
+
+
+
+
