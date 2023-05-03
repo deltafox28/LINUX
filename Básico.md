@@ -386,6 +386,7 @@ dnf groupremove 'Development Tools' (remover)
 ```
 
 ## DPKG (responsável pelo gerenciamento de pacotes no LINUX em distribuições baseadas em Debian):
+```sh
 dpkg --help (lista os comandos)
 dpkg -l vim (ver se o programa esta instalado)
 dpkg -l | grep vim (achar todos os pacotes referentes ao nome vim)
@@ -396,18 +397,63 @@ dpkg -i automake_1.15.1-3ubuntu2_all.deb (instalar o pacote)
 dpkg: erro ao processar o pacote automake (--install) (erro comum)
 apt-get install -f (instalar todas as dependencias)
 dpkg -l | grep automake
+```
 
-## 
+## Administrando as permissões com sudo
+```sh
+vim /etc/sudoers
+groups
+%ziri ALL=(ALL) NOPASSWD: ALL (executar sudo sem autenticacao)
+```
 
+## Dicas e truques avançados para usar o sudo
+```sh
+sudo -k
+vim /etc/sudoers
+sudo systemctl restart sshd
+sudo -l (visualizar o que seu user pode fazer)
+sudo vim /etc/sudoers
+ziri ALL=(ALL) /usr/bin/systemctl (filtrar comandos que o user pode usar)
+ziri ALL=(ALL) /usr/bin/systemctl * sshd (todas as configuracoes do sshd APENAS)
+ziri ALL=(ALL) /usr/bin/systemctl status sshd, /usr/bin/systemctl restart sshd (apenas os comandos restart e status)
+sudo systemctl restart sshd
+sudo systemctl status sshd
+```
 
+## Verificando o espaço do sistema
+```sh
+df (exibir os espacos disponiveis nas particoes)
+df -h 
+df -x tmpfs -x devtmpfs (remove esses tipos de particao da visualizacao)
+du (fornece a quantidade de espaço ocupada por cada subdiretório que se encontra hierarquicamente abaixo do diretório atual)
+du /home/arthur (diretorio especifico)
+du /var (diretorio especifico)
+du -h /home/arthur (diretorio especifico)
+find / -xdev -user arthur -print | xargs ls -ldS > /tmp/arthur
+find / -xdev -size +100M | xargs ls -ldS > /tmp/size
+cat /tmp/arthur
+cat /tmp/size
+```
 
+## Verificando os espaços dos discos com Gdu
+```sh
+https://github.com/dundee/gdu
+curl -L https://github.com/dundee/gdu/releases/latest/download/gdu_linux_amd64.tgz | tar xz
+chmod +x gdu_linux_amd64 (deixar executavel)
+mv gdu_linux_amd64 /usr/bin/gdu (deixar executavel e universal)
+gdu (ver diretorio e seus espacos)
+gdu /home (especificar)
+gdu -- d (delete) -- v (visualizar)
+gdu / (catalogar todos os arquivos)
+gdu -c /etc/systemd (sem cores)
+gdu -n ~ (lista e volta para a shell)
+```
 
-
-
-
-
-
-
+## Descobrir o endereco ip
+```sh
+ping fb.com (ipv6 entre colchetes)
+ping fb.com -4 ()
+```
 
 
 
